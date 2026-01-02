@@ -17,14 +17,6 @@ A **serverless inventory management system** built using AWS services to help bu
 
 ---
 
-## 🏗️ Architecture Overview
-
-
-::contentReference[oaicite:0]{index=0}
-
-
----
-
 ## 🛠️ Tech Stack
 
 - **Frontend**: React  
@@ -36,9 +28,6 @@ A **serverless inventory management system** built using AWS services to help bu
 - **Notifications**: Amazon SNS (Email & SMS)  
 - **Testing Tool**: Postman  
 
-Built on **:contentReference[oaicite:1]{index=1}**
-
----
 
 ## 🔐 Authentication Flow
 
@@ -46,9 +35,6 @@ Built on **:contentReference[oaicite:1]{index=1}**
 2. Cognito issues a JWT access token
 3. Token is sent in every API request:
 Authorization: Bearer <JWT_TOKEN>
-
-yaml
-Copy code
 4. API Gateway validates the token using JWT Authorizer
 
 ---
@@ -58,8 +44,6 @@ Copy code
 Base URL:
 https://psrd9jxg84.execute-api.us-east-1.amazonaws.com
 
-sql
-Copy code
 
 | Method | Route       | Description                  |
 |------|------------|------------------------------|
@@ -84,7 +68,6 @@ Each Lambda function handles a specific responsibility:
 - **updateStock** → Updates stock & checks threshold  
 
 Low-stock logic:
-```text
 If stockCount < threshold → trigger SNS alert
 🗄️ DynamoDB Tables
 Products Table
@@ -125,17 +108,11 @@ Notifications sent via:
 📱 SMS
 
 Example alert:
-
-csharp
-Copy code
 ⚠️ Low Stock Alert: Product XYZ is below threshold
 🌍 CORS Configuration
 OPTIONS /stock route enabled
 
 API Gateway returns:
-
-pgsql
-Copy code
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: Authorization, Content-Type
 Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS
@@ -159,8 +136,6 @@ SNS alert triggering
 This ensured backend stability before UI integration.
 
 🔁 End-to-End Workflow
-scss
-Copy code
 React (Amplify)
    ↓
 Cognito Authentication (JWT)
